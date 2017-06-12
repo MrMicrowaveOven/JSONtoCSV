@@ -10,6 +10,7 @@ function convert(textData) {
   var cards = jsonData.cards;
   var lists = jsonData.lists;
   jsonData.cards.forEach(function(card) {
+    cardArray = [];
     cardArray.push(card.id);
     cardArray.push(card.name);
     var listId = card.idList;
