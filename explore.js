@@ -26,19 +26,19 @@ function convert(textData) {
 
 
 function applyFile() {
-  console.log("Beginning!");
+  // console.log("Beginning!");
   // var input = event.target;
   var file = document.getElementById("jsonFile").files[0];
   // console.log(file);
   var reader = new FileReader();
   var csv;
   reader.onload = function() {
-    console.log("Done!");
+    // console.log("Done!");
     var text = reader.result;
     // console.log(read);
     csv = convert(text);
     giveCSV(csv);
-    console.log(csv.slice(0,1000));
+    // console.log(csv.slice(0,1000));
   };
   reader.readAsText(file);
 }
