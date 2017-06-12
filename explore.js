@@ -11,15 +11,25 @@ function convert(textData) {
   var lists = jsonData.lists;
   jsonData.cards.forEach(function(card) {
     cardArray = [];
-    cardArray.push(card.id);
-    cardArray.push(card.name);
+    cardArray.push('"' + card.id + '"');
+    var name = card.name;
+    var indices = [];
+    for (var i = 0; i < name.length; i++) {
+      if (name[i] === '"'){
+        indices.push(i);
+      }
+    }
+    indices.reverse().forEach(function(index) {
+      name = name.slice(0, index) + '"' + name.slice(index, name.length);
+    });
+    cardArray.push('"' + name + '"');
     var listId = card.idList;
     var listById = lists.find(function(list) {
       return list.id === listId;
     });
-    cardArray.push(listById.name);
-    cardArray.push(card.dateLastActivity);
-    csv += cardArray.join() + "\n";
+    cardArray.push('"' + listById.name + '"');
+    cardArray.push('"' + card.dateLastActivity + '"');
+    csv += cardArray.join(",") + "\n";
     // console.log(cardArray.join() + "\n");
   });
   return csv;
