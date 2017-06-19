@@ -46,7 +46,7 @@ function applyFile() {
   reader.onload = function() {
     // console.log("Done!");
     var text = reader.result;
-    // console.log(read);
+    console.log(JSON.parse(text));
     csv = convert(text);
     giveCSV(csv);
     // console.log(csv.slice(0,1000));
